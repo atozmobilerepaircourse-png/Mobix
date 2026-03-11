@@ -20,7 +20,8 @@ import { queryClient } from "@/lib/query-client";
 import { AppProvider, useApp } from "@/lib/context";
 import { SecurityProvider } from "@/lib/security";
 import { requestNotificationPermission, cleanupSounds } from "@/lib/notifications";
-import { FloatingUploadBanner } from "@/components/FloatingUploadBanner";
+import { FloatingUploadBanner } from "@/components/FloatingUploadBanner"
+import { useFrameworkReady } from '@/hooks/useFrameworkReady';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -63,6 +64,7 @@ function SecuredApp() {
 }
 
 export default function RootLayout() {
+  useFrameworkReady();
   const [fontsLoaded, fontError] = useFonts({
     Inter_400Regular,
     Inter_500Medium,
